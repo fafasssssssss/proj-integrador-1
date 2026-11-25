@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillDef" format=3 uid="uid://bqvoemgpjh8sx"]
+
+[ext_resource type="Script" uid="uid://di3mwvuk3lvaf" path="res://GAMEold/Core/Defs/SkillDef.gd" id="1_eufh1"]
+[ext_resource type="Script" uid="uid://ceulf1eqxo756" path="res://GAMEold/Base/Capita/capita_dash.gd" id="1_yub7e"]
+
+[resource]
+script = ExtResource("1_eufh1")
+type = 2
+logic = ExtResource("1_yub7e")
+skillName = "Dash"
+duration = 0.2
+stats = Dictionary[String, Variant]({
+"dash_speed": 6.0
+})
+metadata/_custom_type_script = "uid://di3mwvuk3lvaf"

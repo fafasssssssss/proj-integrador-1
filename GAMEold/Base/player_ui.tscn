@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cauhbrua8j72v"]
+
+[ext_resource type="Script" uid="uid://cq0epgikmbcw7" path="res://GAMEold/Base/UI_ProgressBar.gd" id="1_7pgvf"]
+
+[sub_resource type="Gradient" id="Gradient_bgyip"]
+colors = PackedColorArray(0.06469653, 0.06469653, 0.06469653, 1, 0.096204735, 0.09620475, 0.096204735, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bgyip"]
+gradient = SubResource("Gradient_bgyip")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_7pgvf"]
+colors = PackedColorArray(0.8560673, 0.8560673, 0.85606724, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7pgvf"]
+gradient = SubResource("Gradient_7pgvf")
+
+[node name="PlayerUI" type="CanvasLayer" unique_id=856551446]
+
+[node name="Control" type="Control" parent="." unique_id=459123682]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="TextureProgressBar" parent="Control" unique_id=2112733901]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.000492
+offset_top = -72.355034
+offset_right = 39.999508
+offset_bottom = -62.275032
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_bgyip")
+texture_progress = SubResource("GradientTexture2D_7pgvf")
+tint_progress = Color(1, 0.19194686, 0.28770804, 1)
+script = ExtResource("1_7pgvf")
+stat_name = "hp"
+duration = 0.5
+
+[node name="Dash" type="TextureProgressBar" parent="Control" unique_id=1600577813]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 41.978
+offset_right = 40.0
+offset_bottom = 48.653
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_bgyip")
+texture_progress = SubResource("GradientTexture2D_7pgvf")
+tint_progress = Color(6.7960624e-05, 0.82143384, 0.9709138, 1)
+script = ExtResource("1_7pgvf")
+stat_name = "dash"
+duration = 0.5
+skill = true
+disappear = true

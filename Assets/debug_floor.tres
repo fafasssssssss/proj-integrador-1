@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://smlh8bp0n31w"]
+
+[ext_resource type="Texture2D" uid="uid://dvnahnqmiqfhw" path="res://textures/Tilemap-Green_Acres.png" id="1_s87hy"]
+
+[resource]
+albedo_texture = ExtResource("1_s87hy")
+uv1_scale = Vector3(15, 15, 15)
+texture_filter = 0

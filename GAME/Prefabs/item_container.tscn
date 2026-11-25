@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b6raq5xv2hpui"]
+
+[ext_resource type="Script" uid="uid://bi8o18lqhfvns" path="res://GAME/Prefabs/ItemContainer.gd" id="1_04y2h"]
+[ext_resource type="Texture2D" uid="uid://dsuppaqrjbtbk" path="res://Assets/textures/icon.svg" id="1_ei4m5"]
+[ext_resource type="Script" uid="uid://2uyi61bts7gs" path="res://GAME/Prefabs/ItemQueueLogic.gd" id="3_xm0gw"]
+
+[node name="ItemContainer" type="Control" unique_id=436096517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04y2h")
+
+[node name="Items" type="HBoxContainer" parent="." unique_id=1369588736]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Items" unique_id=174275007]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_ei4m5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Items/TextureRect" unique_id=1664699121]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Items" unique_id=2067323427]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_ei4m5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Items/TextureRect2" unique_id=342187505]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Items" unique_id=1922016617]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_ei4m5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Items/TextureRect3" unique_id=622309256]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Items" unique_id=1032516170]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_ei4m5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Items/TextureRect4" unique_id=1910152122]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Items" unique_id=602692440]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_ei4m5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Items/TextureRect5" unique_id=554012644]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ItemQueueLogic" type="Node" parent="." unique_id=1627819982]
+script = ExtResource("3_xm0gw")

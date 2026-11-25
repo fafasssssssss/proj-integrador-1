@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://lwisknn6uc33"]
+
+[ext_resource type="Script" uid="uid://5e881hiopi6c" path="res://Scripts/player/player.gd" id="1_f5l8c"]
+[ext_resource type="Texture2D" uid="uid://ggrk8wrf265p" path="res://Assets/textures/survivors/capita_placeholder.png" id="2_f5l8c"]
+[ext_resource type="Resource" uid="uid://bwwu86ccq8jq1" path="res://Scripts/player/stats/reporter.tres" id="2_h3o3o"]
+[ext_resource type="Script" uid="uid://bf22pyboa3t3c" path="res://Scripts/player/player_movement.gd" id="3_6j23k"]
+[ext_resource type="Script" uid="uid://dvyskdrsea45k" path="res://Scripts/player/player_visual.gd" id="5_73mue"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(1.9206543, 2.2218018, 1)
+
+[sub_resource type="Gradient" id="Gradient_52vux"]
+offsets = PackedFloat32Array(0, 0.5847751)
+colors = PackedColorArray(0, 0, 0, 0.7058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_52vux"]
+gradient = SubResource("Gradient_52vux")
+width = 180
+height = 120
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
+
+[node name="Player3D" type="CharacterBody3D" unique_id=683979999]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+script = ExtResource("1_f5l8c")
+stats = ExtResource("2_h3o3o")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1047312964]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=981856509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32434085, 1.0314378, 0)
+shape = SubResource("BoxShape3D_g4v7s")
+debug_color = Color(0.99215686, 0, 0.27450982, 1)
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=261767949]
+offset = Vector2(81.64, 260)
+pixel_size = 0.005
+billboard = 1
+texture = ExtResource("2_f5l8c")
+
+[node name="shadow" type="Sprite3D" parent="." unique_id=748943323]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+offset = Vector2(0, 10)
+axis = 1
+billboard = 2
+no_depth_test = true
+texture = SubResource("GradientTexture2D_52vux")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=794498048]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 2.8926888, 6.305578, 3.3683798)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=10649668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.729265, -0.815463, 0)
+projection = 1
+size = 15.34642
+
+[node name="Label" type="Label" parent="." unique_id=351409555]
+offset_right = 284.0
+offset_bottom = 295.0
+text = "aaaa
+aa
+
+aa
+a
+a
+a
+a
+
+a"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=596360931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="Components" type="Node" parent="." unique_id=1068632283]
+
+[node name="Movement" type="Node" parent="Components" unique_id=771902818]
+script = ExtResource("3_6j23k")
+
+[node name="Visual" type="Node" parent="Components" unique_id=1841595973]
+script = ExtResource("5_73mue")

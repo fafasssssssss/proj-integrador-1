@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://col0ai1ytf4ak"]
+
+[ext_resource type="PackedScene" uid="uid://cebc4idjp77u" path="res://GAMEold/Core/Common/sprite_component.tscn" id="1_l0mt7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0mt7"]
+
+[node name="Player" type="CharacterBody3D" unique_id=215790700]
+
+[node name="bodyCollider" type="CollisionShape3D" parent="." unique_id=817243529]
+shape = SubResource("BoxShape3D_l0mt7")
+
+[node name="spriteComponent" parent="." unique_id=597777859 instance=ExtResource("1_l0mt7")]
+
+[editable path="spriteComponent"]

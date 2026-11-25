@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bywtwyaspmxee"]
+
+[ext_resource type="Script" uid="uid://dc7jj5rbr33wp" path="res://Assets/Prefabs/Util/hitbox.gd" id="1_pm71e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+
+[node name="Hitbox" type="Area3D" unique_id=347260227 node_paths=PackedStringArray("collider") groups=["Attack"]]
+script = ExtResource("1_pm71e")
+collider = NodePath("collider")
+
+[node name="collider" type="CollisionShape3D" parent="." unique_id=120863963]
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="timer" type="Timer" parent="." unique_id=113515026]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

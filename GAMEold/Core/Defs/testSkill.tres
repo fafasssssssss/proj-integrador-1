@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SkillDef" format=3 uid="uid://c5tbr43xvxjcf"]
+
+[ext_resource type="Script" uid="uid://di3mwvuk3lvaf" path="res://GAMEold/Core/Defs/SkillDef.gd" id="1_jqrus"]
+
+[resource]
+script = ExtResource("1_jqrus")
+metadata/_custom_type_script = "uid://di3mwvuk3lvaf"

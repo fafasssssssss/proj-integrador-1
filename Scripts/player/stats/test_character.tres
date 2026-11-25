@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://kp51r7hnuopn"]
+
+[ext_resource type="Script" uid="uid://byiw5sjrwiku7" path="res://Scripts/player/player_stats.gd" id="1_qlk6t"]
+[ext_resource type="Texture2D" uid="uid://hcjnerluyrfd" path="res://Assets/textures/survivors/testspritelol.png" id="2_u44ni"]
+
+[resource]
+script = ExtResource("1_qlk6t")
+sprite = ExtResource("2_u44ni")
+dash_speed = 8.0
+metadata/_custom_type_script = "uid://byiw5sjrwiku7"

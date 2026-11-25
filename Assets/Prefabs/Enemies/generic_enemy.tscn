@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://io51qdsotjbe"]
+
+[ext_resource type="Texture2D" uid="uid://b1yqaufqoucvg" path="res://Assets/textures/Inimigos/inimigo_basico_top_placeholder.png" id="1_eqt1j"]
+[ext_resource type="Script" uid="uid://d17dvrjlavsdt" path="res://Assets/Prefabs/Enemies/generic_enemy.gd" id="1_hxy5t"]
+[ext_resource type="Texture2D" uid="uid://gb7owp5ppq3n" path="res://Assets/textures/Inimigos/inimigo_basico_bottom_placeholder.png" id="2_c1a2u"]
+[ext_resource type="PackedScene" uid="uid://dc6ka804ls8sq" path="res://Assets/Prefabs/Util/hurtbox.tscn" id="4_eqt1j"]
+[ext_resource type="PackedScene" uid="uid://bywtwyaspmxee" path="res://Assets/Prefabs/Util/hitbox.tscn" id="5_c1a2u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j0s28"]
+radius = 0.334
+height = 1.5
+
+[sub_resource type="Gradient" id="Gradient_52vux"]
+offsets = PackedFloat32Array(0, 0.5847751)
+colors = PackedColorArray(0, 0, 0, 0.7058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5l3x"]
+gradient = SubResource("Gradient_52vux")
+width = 180
+height = 120
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqt1j"]
+size = Vector3(1.051, 1.364, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1a2u"]
+height = 1.5
+
+[node name="GenericEnemy" type="CharacterBody3D" unique_id=1557284252 groups=["Enemies"]]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_hxy5t")
+hp = 15.0
+
+[node name="bodyCollider" type="CollisionShape3D" parent="." unique_id=1642750476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0070067644, -0.3234289)
+shape = SubResource("CapsuleShape3D_j0s28")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="top" type="Sprite3D" parent="." unique_id=171613038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70395195, 0)
+sorting_use_aabb_center = false
+cast_shadow = 0
+offset = Vector2(0, 150)
+pixel_size = 0.005
+billboard = 1
+no_depth_test = true
+alpha_cut = 2
+texture = ExtResource("1_eqt1j")
+
+[node name="bottom" type="Sprite3D" parent="." unique_id=1797989485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70395195, 0)
+sorting_use_aabb_center = false
+cast_shadow = 0
+offset = Vector2(0, 150)
+pixel_size = 0.005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("2_c1a2u")
+
+[node name="shadow" type="Sprite3D" parent="." unique_id=395954469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.7537005, 3.2945294e-08)
+sorting_use_aabb_center = false
+offset = Vector2(0, 10)
+axis = 1
+billboard = 2
+texture = SubResource("GradientTexture2D_n5l3x")
+
+[node name="Hurtbox" parent="." unique_id=1144079492 instance=ExtResource("4_eqt1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70395195, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="collider" parent="Hurtbox" index="0" unique_id=844948697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7192621, -0.3249774)
+shape = SubResource("BoxShape3D_eqt1j")
+
+[node name="Hitbox" parent="." unique_id=347260227 node_paths=PackedStringArray("collider") instance=ExtResource("5_c1a2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70395195, 0)
+collision_layer = 2
+collision_mask = 2
+collider = NodePath("../bodyCollider")
+damage = 25.0
+
+[node name="collider" parent="Hitbox" index="0" unique_id=120863963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70811856, -0.31405005)
+shape = SubResource("CapsuleShape3D_c1a2u")
+debug_color = Color(0.98165697, 0.13254318, 1.92523e-07, 1)
+
+[node name="Components" type="Node" parent="." unique_id=637228990]
+
+[node name="Movement" type="Node" parent="Components" unique_id=1572666305]
+
+[node name="Visual" type="Node" parent="Components" unique_id=1569667260]
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

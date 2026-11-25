@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="QuakeMapFile"
+uid="uid://k6bk8ft2r4rn"
+path="res://.godot/imported/test_map.3.map-f399c7c579d221bdb5796ca4433b0f8b.tres"
+
+[deps]
+
+source_file="res://GAMEold/Base/Maps/autosave/test_map.3.map"
+dest_files=["res://.godot/imported/test_map.3.map-f399c7c579d221bdb5796ca4433b0f8b.tres"]
+
+[params]
+

@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dbe6ihx6dy7ne"]
+
+[ext_resource type="Texture2D" uid="uid://dvnahnqmiqfhw" path="res://textures/Tilemap-Green_Acres.png" id="1_fqygo"]
+[ext_resource type="Material" uid="uid://smlh8bp0n31w" path="res://Assets/debug_floor.tres" id="1_mqujp"]
+[ext_resource type="PackedScene" uid="uid://lwisknn6uc33" path="res://Assets/Prefabs/player_3d.tscn" id="2_wnj1c"]
+[ext_resource type="PackedScene" uid="uid://io51qdsotjbe" path="res://Assets/Prefabs/Enemies/generic_enemy.tscn" id="3_wnj1c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q2y0d"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6ylrm"]
+sky_material = SubResource("ProceduralSkyMaterial_q2y0d")
+
+[sub_resource type="Environment" id="Environment_nkt1e"]
+background_mode = 2
+sky = SubResource("Sky_6ylrm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqygo"]
+albedo_color = Color(1, 0.61389726, 0.984546, 1)
+albedo_texture = ExtResource("1_fqygo")
+uv1_scale = Vector3(0.6, 0.6, 0.6)
+texture_filter = 0
+
+[node name="TestRoom3D" type="Node3D" unique_id=533720354]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1442958483]
+environment = SubResource("Environment_nkt1e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1236867745]
+transform = Transform3D(-0.77940077, -0.43301278, 0.45280734, 0.2102896, 0.5, 0.8401061, -0.59018034, 0.75, -0.29864225, 1.8395072, 6.3722405, -3.1861196)
+shadow_enabled = true
+
+[node name="level" type="CSGCombiner3D" parent="." unique_id=1339896851]
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="level" unique_id=390145397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(500, 1, 500)
+material = ExtResource("1_mqujp")
+
+[node name="floor2" type="CSGBox3D" parent="level" unique_id=2011834744]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -24.334726, 0.4774065, 12.500861)
+size = Vector3(20, 3, 20)
+material = SubResource("StandardMaterial3D_fqygo")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="level" unique_id=1306516505]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -14.326246, -0.0035293102, 15.250249)
+polygon = PackedVector2Array(0, 0, 0, 2, 6, 0)
+depth = 6.0
+
+[node name="Player3D" parent="." unique_id=683979999 instance=ExtResource("2_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 1.2784597, 0)
+
+[node name="GenericEnemy" parent="." unique_id=83776788 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 4.499302, 1.4418902, 2.7842941)
+
+[node name="GenericEnemy2" parent="." unique_id=1557284252 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 18.337986, 0.8022504, 1.0262289)
+
+[node name="GenericEnemy3" parent="." unique_id=1582438511 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 23.020618, 0.8022504, -14.2487)
+
+[node name="GenericEnemy4" parent="." unique_id=1121044746 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 7.7204027, 0.8022504, 20.412552)
+
+[node name="GenericEnemy5" parent="." unique_id=1050839958 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 14.127718, 0.8022504, 11.808353)
+
+[node name="GenericEnemy6" parent="." unique_id=1714764194 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -7.1314793, 0.8022504, 26.748951)
+
+[node name="GenericEnemy7" parent="." unique_id=1692262059 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -19.789778, 0.8022504, 30.637697)
+
+[node name="GenericEnemy8" parent="." unique_id=970896623 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -44.160316, 0.8022523, 10.894415)
+
+[node name="GenericEnemy9" parent="." unique_id=1174259820 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -37.487656, 0.8022504, -6.546507)
+
+[node name="GenericEnemy10" parent="." unique_id=1166292539 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -24.294285, 0.8022504, -5.785963)
+
+[node name="GenericEnemy11" parent="." unique_id=1890579544 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -20.375835, 0.8022504, -17.395329)
+
+[node name="GenericEnemy12" parent="." unique_id=432777979 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.908379, 0.8022504, -22.062424)
+
+[node name="GenericEnemy13" parent="." unique_id=349497306 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -14.8911915, 0.8022504, -31.946487)
+
+[node name="GenericEnemy14" parent="." unique_id=1653041452 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -8.781525, 0.8022504, -30.254555)
+
+[node name="GenericEnemy15" parent="." unique_id=709825596 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -3.7381706, 0.8022504, -31.233356)
+
+[node name="GenericEnemy16" parent="." unique_id=339409247 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 13.289228, 0.8022504, -24.342262)
+
+[node name="GenericEnemy17" parent="." unique_id=1651244969 instance=ExtResource("3_wnj1c")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 7.189867, 0.8022485, -28.679134)
+
+[editable path="Player3D"]
+[editable path="Player3D/Hurtbox"]
+[editable path="GenericEnemy"]
+[editable path="GenericEnemy/Hurtbox"]
+[editable path="GenericEnemy/Hitbox"]

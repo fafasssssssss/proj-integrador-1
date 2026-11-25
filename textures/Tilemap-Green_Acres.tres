@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cyvh2an5phrco"]
+
+[ext_resource type="Texture2D" uid="uid://dvnahnqmiqfhw" path="res://textures/Tilemap-Green_Acres.png" id="1_dnjih"]
+
+[resource]
+albedo_texture = ExtResource("1_dnjih")
+metallic_specular = 0.0
+texture_filter = 2

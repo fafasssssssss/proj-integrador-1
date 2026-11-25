@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cg6o7kd8sp7xd"]
+
+[ext_resource type="Script" uid="uid://3cemlm2pkrxr" path="res://Scripts/debug/DEBUG_change_survivor.gd" id="1_56v82"]
+[ext_resource type="Texture2D" uid="uid://ic6o4epmay55" path="res://Assets/textures/debug_characterchanger.png" id="2_ij5l6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57qmd"]
+radius = 30.0
+height = 120.0
+
+[node name="Interactable" type="Area2D" unique_id=371515335]
+script = ExtResource("1_56v82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=930297315]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_57qmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=943680136]
+texture_filter = 1
+texture = ExtResource("2_ij5l6")
+offset = Vector2(0, -37.34)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://nctv483nelfo"]
+
+[ext_resource type="Texture2D" uid="uid://dvnahnqmiqfhw" path="res://textures/Tilemap-Green_Acres.png" id="1_ipjro"]
+[ext_resource type="PackedScene" uid="uid://4qgchmeddjrt" path="res://Assets/Prefabs/player.tscn" id="2_7yrlh"]
+[ext_resource type="PackedScene" uid="uid://cg6o7kd8sp7xd" path="res://Assets/Prefabs/interactable.tscn" id="3_qv2sm"]
+[ext_resource type="Resource" uid="uid://bwwu86ccq8jq1" path="res://Scripts/player/stats/reporter.tres" id="4_0vtcy"]
+
+[node name="TestRoom1" type="Node2D" unique_id=1598876570]
+
+[node name="background" type="Sprite2D" parent="." unique_id=1859739777]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-483, -773)
+scale = Vector2(6, 6)
+texture = ExtResource("1_ipjro")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 5000)
+
+[node name="Player" parent="." unique_id=335552734 instance=ExtResource("2_7yrlh")]
+position = Vector2(585, 318)
+
+[node name="Interactable" parent="." unique_id=1541525669 instance=ExtResource("3_qv2sm")]
+position = Vector2(1811, -141)
+survivor_to_change = ExtResource("4_0vtcy")

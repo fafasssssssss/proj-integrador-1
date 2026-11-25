@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://lwisknn6uc33"]
+
+[ext_resource type="Script" uid="uid://dba3tulvblp4j" path="res://GAMEold/Core/Common/PlayerMaster.gd" id="1_ckie0"]
+[ext_resource type="Script" uid="uid://bf22pyboa3t3c" path="res://Scripts/player/player_movement.gd" id="3_6j23k"]
+[ext_resource type="Texture2D" uid="uid://ccpldhj5mbyih" path="res://Assets/textures/survivors/capita_top_placeholder.png" id="3_naidq"]
+[ext_resource type="Texture2D" uid="uid://crg4hoo3f133o" path="res://Assets/textures/survivors/capita_bottom_placeholder.png" id="4_qcbme"]
+[ext_resource type="Script" uid="uid://dvyskdrsea45k" path="res://Scripts/player/player_visual.gd" id="5_73mue"]
+[ext_resource type="Texture2D" uid="uid://d2enx321k1iqj" path="res://Assets/textures/shadow_tex.tres" id="5_p5y00"]
+[ext_resource type="PackedScene" uid="uid://dc6ka804ls8sq" path="res://Assets/Prefabs/Util/hurtbox.tscn" id="7_qcbme"]
+[ext_resource type="PackedScene" uid="uid://bdns5sahb0f0q" path="res://Assets/Prefabs/Attacks/capita_primaria.tscn" id="8_ckie0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73mue"]
+radius = 0.55
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qcbme"]
+radius = 0.6
+
+[node name="Player3D" type="CharacterBody3D" unique_id=683979999 groups=["Player"]]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_ckie0")
+
+[node name="top" type="Sprite3D" parent="." unique_id=261767949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.240508, 0)
+sorting_use_aabb_center = false
+cast_shadow = 0
+offset = Vector2(0, 260)
+pixel_size = 0.005
+billboard = 1
+no_depth_test = true
+alpha_cut = 2
+texture = ExtResource("3_naidq")
+
+[node name="bottom" type="Sprite3D" parent="." unique_id=927731574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.240508, 0)
+sorting_use_aabb_center = false
+cast_shadow = 0
+offset = Vector2(0, 260)
+pixel_size = 0.005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("4_qcbme")
+
+[node name="shadow" type="Sprite3D" parent="." unique_id=748943323]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2551962, 5.4866373e-08)
+visible = false
+sorting_use_aabb_center = false
+offset = Vector2(0, 10)
+axis = 1
+billboard = 2
+texture = ExtResource("5_p5y00")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=794498048]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.70710665, 0.70710665, 0, -0.70710665, 0.70710665, 2.8926888, 12.570824, 11.561541)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=10649668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.729265, -0.815463, 0)
+projection = 1
+size = 15.34642
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=596360931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24050796, -0.3234289)
+shape = SubResource("CapsuleShape3D_73mue")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="Hurtbox" parent="." unique_id=1144079492 instance=ExtResource("7_qcbme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.240508, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="collider" parent="Hurtbox" index="0" unique_id=844948697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.000998, -0.33648247)
+shape = SubResource("CapsuleShape3D_qcbme")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CapitaPrimaria" parent="." unique_id=434816085 instance=ExtResource("8_ckie0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.240508, 0)
+
+[node name="Components" type="Node" parent="." unique_id=1068632283]
+
+[node name="Movement" type="Node" parent="Components" unique_id=771902818]
+script = ExtResource("3_6j23k")
+
+[node name="Visual" type="Node" parent="Components" unique_id=1841595973 node_paths=PackedStringArray("sprite_top", "sprite_bot")]
+script = ExtResource("5_73mue")
+sprite_top = NodePath("../../top")
+sprite_bot = NodePath("../../bottom")
+
+[node name="Label" type="Label" parent="." unique_id=1700628781]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Mover: WASD
+Dash: SPACE (tem 1 segundo de cooldown)"
+
+[node name="Decal" type="Decal" parent="." unique_id=696570694]
+texture_albedo = ExtResource("5_p5y00")
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="Hurtbox"]

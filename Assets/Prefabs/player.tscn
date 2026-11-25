@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://4qgchmeddjrt"]
+
+[ext_resource type="Script" uid="uid://5e881hiopi6c" path="res://Scripts/player/player.gd" id="1_3vyb7"]
+[ext_resource type="Resource" uid="uid://kp51r7hnuopn" path="res://Scripts/player/stats/test_character.tres" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://bf22pyboa3t3c" path="res://Scripts/player/player_movement.gd" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://dbytut81nrbgk" path="res://Scripts/player/player_dash.gd" id="3_dqkch"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yf5fn"]
+size = Vector2(75, 100)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 35.0
+height = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 90.0
+
+[node name="Player" type="CharacterBody2D" unique_id=335552734]
+script = ExtResource("1_3vyb7")
+stats = ExtResource("2_dqkch")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1684065078]
+texture = SubResource("PlaceholderTexture2D_yf5fn")
+
+[node name="playerCollider" type="CollisionShape2D" parent="." unique_id=92133113]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="pickupRange" type="CollisionShape2D" parent="." unique_id=943041584]
+shape = SubResource("CircleShape2D_g4v7s")
+debug_color = Color(1.6845763e-06, 0.63916045, 0.3730341, 0.41960785)
+
+[node name="playerCam" type="Camera2D" parent="." unique_id=425772939]
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.01
+drag_top_margin = 0.01
+drag_right_margin = 0.01
+drag_bottom_margin = 0.01
+editor_draw_drag_margin = true
+
+[node name="Components" type="Node" parent="." unique_id=248092388]
+
+[node name="Movement" type="Node" parent="Components" unique_id=1158950311]
+script = ExtResource("2_qhqgy")
+
+[node name="Dash" type="Node" parent="Components" unique_id=1858743044]
+script = ExtResource("3_dqkch")

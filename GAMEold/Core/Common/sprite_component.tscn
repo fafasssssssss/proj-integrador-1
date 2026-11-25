@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cebc4idjp77u"]
+
+[ext_resource type="SpriteFrames" uid="uid://dkvovp1way37f" path="res://GAMEold/Base/new_sprite_frames.tres" id="1_lm5dx"]
+[ext_resource type="Texture2D" uid="uid://cmad6qff0e3ld" path="res://Assets/textures/survivors/capita/capita_walk_sheet_R.png" id="2_lm5dx"]
+
+[sub_resource type="Curve" id="Curve_lm5dx"]
+_data = [Vector2(0, 0.75496686), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sh6vc"]
+curve = SubResource("Curve_lm5dx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpovq"]
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_sh6vc")
+hue_variation_min = 0.049999975
+hue_variation_max = 0.049999975
+anim_speed_min = 10.0
+anim_speed_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_263v0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_lm5dx")
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_de04e"]
+material = SubResource("StandardMaterial3D_263v0")
+
+[node name="spriteComponent" type="Marker3D" unique_id=597777859]
+
+[node name="top" type="Sprite3D" parent="." unique_id=902831452]
+sorting_use_aabb_center = false
+
+[node name="bottom" type="Sprite3D" parent="." unique_id=947943064]
+sorting_use_aabb_center = false
+
+[node name="animated" type="AnimatedSprite3D" parent="." unique_id=1854279498]
+sprite_frames = ExtResource("1_lm5dx")
+animation = &"walking_R"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=199037218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42846346)
+fixed_fps = 5
+process_material = SubResource("ParticleProcessMaterial_wpovq")
+draw_pass_1 = SubResource("QuadMesh_de04e")
